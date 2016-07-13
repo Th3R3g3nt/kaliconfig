@@ -54,7 +54,6 @@ echo "[ ] Done."
 
 ## SSH Port ##
 echo "[ ] Configuring SSH"
-/etc/init.d/ssh stop
 sed -i 's/^Port .*/Port 65022/g' /etc/ssh/sshd_config
 sed -i 's/^ServerKeyBits .*/ServerKeyBits 8192/g' /etc/ssh/sshd_config
 sed -i 's/^PermitRootLogin .*/PermitRootLogin no/g' /etc/ssh/sshd_config
@@ -62,6 +61,7 @@ sed -i 's/#Banner \/etc\/issue.net/Banner \/etc\/issue.net/g' /etc/ssh/sshd_conf
 echo "DebianBanner no" >>/etc/ssh/sshd_config
 echo "Ciphers aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,arcfour" >>/etc/ssh/sshd_config
 echo "MACs hmac-sha1,hmac-ripemd160,hmac-sha2-256,hmac-sha2-512" >>/etc/ssh/sshd_config
+/etc/init.d/ssh restart
 echo "[ ] Done."
 
 ## CAL9000 ##
