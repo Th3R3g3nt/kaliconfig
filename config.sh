@@ -87,3 +87,24 @@ echo "[ ] Installing Flash"
 apt-get install flashplugin-nonfree
 update-flashplugin-nonfree --install
 echo "[ ] Done."
+
+## Colon-replace ##
+echo "[ ] Creating replace_colon script"
+echo "rename 's|:|_|g' *" >replace_colon.sh
+echo "[ ] Done."
+
+
+## Replace issue.net ##
+sed -i 's/^Kali .*/Unauthorized connection is prohibited by local, state, federal and\/or international laws. Do not proceed unless you are authorized by the Owner of this asset./g' /etc/issue.net
+
+## Adding rsyslog tweaks
+echo "if $msg contains 'SSH' then -/var/log/ssh.log" >> /etc/rsyslog.conf
+echo "& ~" >> /etc/rsyslog.conf
+echo "if $msg contains 'IPTables-Drop' then -/var/log/iptables-drop.log" >> /etc/rsyslog.conf
+echo "& ~" >> /etc/rsyslog.conf
+
+
+## Reminders ##
+echo ""
+echo "Done with the automated portion"
+echo "!!! Don't forget Nessus !!!"
