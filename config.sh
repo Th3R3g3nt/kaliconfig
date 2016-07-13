@@ -22,3 +22,33 @@ echo "[ ] Done."
 echo "[ ] Start MSF at startup"
 update-rc.d postgresql enable
 update-rc.d metasploit enable
+
+## IPTables rule
+echo "[ ] Installing firewall rules"
+iptables -F
+iptables -P FORWARD DROP
+iptables -P OUTPUT ACCEPT
+iptables -X LOGGING
+iptables -N LOGGING
+
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A INPUT -s 127.0.0.0/8 -d 127.0.0.0/8 -i lo -j ACCEPT
+iptables -A INPUT -p tcp --dport 65022 -m state --state NEW -j ACCEPT
+iptables -A INPUT -j LOGGING
+
+iptables -A FORWARD -s 127.0.0.0/8 -d 127.0.0.0/8 -i lo -j ACCEPT
+iptables -A FORWARD -j LOGGING
+
+iptables -A LOGGING -m limit --limit 2/min -j LOG --log-prefix "IPTables-Drop: " --log-level 4
+iptables -A LOGGING -s 224.0.0.0/4 -j DROP
+iptables -A LOGGING -p icmp -j DROP
+iptables -A LOGGING -j DROP
+
+iptables-save > /etc/iptables.rules
+echo "#!/bin/sh" > /etc/network/if-pre-up.d/iptablesload
+echo "iptables-restore < /etc/iptables.rules" >> /etc/network/if-pre-up.d/iptablesload
+echo "exit 0" >> /etc/network/if-pre-up.d/iptablesload
+chmod +x /etc/network/if-pre-up.d/iptablesload
+iptables-restore < /etc/iptables.rules
+echo "[ ] Done."
+
