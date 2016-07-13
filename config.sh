@@ -72,3 +72,12 @@ cd Cal9000
 wget -c -r --no-parent http://owasp-code-central.googlecode.com/svn/trunk/labs/cal9000/
 cd /root
 echo "[ ] Done."
+
+## Veil Framework ##
+echo "[ ] Installing Veil Framework"
+cd /root
+git clone https://github.com/Veil-Framework/Veil.git
+cd Veil
+./Install.sh -c
+cd /root
+echo "[ ] Done."
