@@ -81,3 +81,9 @@ cd Veil
 ./Install.sh -c
 cd /root
 echo "[ ] Done."
+
+## Flash ##
+echo "[ ] Installing Flash"
+apt-get install flashplugin-nonfree
+update-flashplugin-nonfree --install
+echo "[ ] Done."
