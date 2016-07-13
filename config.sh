@@ -63,3 +63,12 @@ echo "DebianBanner no" >>/etc/ssh/sshd_config
 echo "Ciphers aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,arcfour" >>/etc/ssh/sshd_config
 echo "MACs hmac-sha1,hmac-ripemd160,hmac-sha2-256,hmac-sha2-512" >>/etc/ssh/sshd_config
 echo "[ ] Done."
+
+## CAL9000 ##
+echo "[ ] Downloading CAL9000"
+cd /root
+mkdir Cal9000
+cd Cal9000
+wget -c -r --no-parent http://owasp-code-central.googlecode.com/svn/trunk/labs/cal9000/
+cd /root
+echo "[ ] Done."
