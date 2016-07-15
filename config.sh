@@ -1,5 +1,5 @@
 #!/bin/sh
-
+ 
 echo "-= Customizing Kali for th3r3g3nt =-"
 cd /root
 
@@ -98,8 +98,13 @@ echo "[ ] Done."
 sed -i 's/^Kali .*/Unauthorized connection is prohibited by local, state, federal and\/or international laws. Do not proceed unless you are authorized by the Owner of this asset./g' /etc/issue.net
 
 ## Adding rsyslog tweaks
-echo "if $msg contains 'SSH' then -/var/log/ssh.log" >> /etc/rsyslog.conf
+## SSH Monitoring
+touch /var/log/sshd.log
+echo "if $programname == 'sshd' then /var/log/sshd.log" >> /etc/rsyslog.conf
 echo "& ~" >> /etc/rsyslog.conf
+
+## Firewall Drops
+touch /var/log/iptables-drop.log
 echo "if $msg contains 'IPTables-Drop' then -/var/log/iptables-drop.log" >> /etc/rsyslog.conf
 echo "& ~" >> /etc/rsyslog.conf
 
