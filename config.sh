@@ -58,9 +58,12 @@ sed -i 's/^Port .*/Port 65022/g' /etc/ssh/sshd_config
 sed -i 's/^ServerKeyBits .*/ServerKeyBits 8192/g' /etc/ssh/sshd_config
 sed -i 's/^PermitRootLogin .*/PermitRootLogin no/g' /etc/ssh/sshd_config
 sed -i 's/#Banner \/etc\/issue.net/Banner \/etc\/issue.net/g' /etc/ssh/sshd_config
+
 echo "DebianBanner no" >>/etc/ssh/sshd_config
-echo "Ciphers aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,arcfour" >>/etc/ssh/sshd_config
-echo "MACs hmac-sha1,hmac-ripemd160,hmac-sha2-256,hmac-sha2-512" >>/etc/ssh/sshd_config
+echo "Ciphers aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr,chacha20-poly1305@openssh.com" >>/etc/ssh/sshd_config
+echo "HostKeyAlgorithms ssh-rsa,ssh-ed25519" >>/etc/ssh/sshd_config
+echo "KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512" >>/etc/ssh/sshd_config
+echo "MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com" >>/etc/ssh/sshd_config
 /etc/init.d/ssh restart
 echo "[ ] Done."
 
