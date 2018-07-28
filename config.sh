@@ -15,7 +15,7 @@ echo "[ ] Done."
 
 ## Goodies ##
 echo "[ ] Installing goodies"
-apt-get -y install synaptic tuxcmd tuxcmd-modules libreoffice tor filezilla filezilla-common htop nethogs gtk-recordmydesktop recordmydesktop remmina unrar unace rar unrar p7zip zip unzip p7zip-full p7zip-rar file-roller curl ike-scan nikto john libssl-dev bridge-utils bettercap
+apt-get -y install synaptic tuxcmd tuxcmd-modules libreoffice tor filezilla filezilla-common htop nethogs gtk-recordmydesktop recordmydesktop remmina unrar unace rar unrar p7zip zip unzip p7zip-full p7zip-rar file-roller curl ike-scan nikto john libssl-dev bridge-utils bettercap docker docker-compose curl virtualbox
 echo "[ ] Done."
 
 ## Enable Metasploit at Startup ##
@@ -86,10 +86,23 @@ cd /root
 echo "[ ] Done."
 
 ## Flash ##
-echo "[ ] Installing Flash"
-apt-get install flashplugin-nonfree
-update-flashplugin-nonfree --install
-echo "[ ] Done."
+#echo "[ ] Installing Flash"
+#apt-get install flashplugin-nonfree
+#update-flashplugin-nonfree --install
+#echo "[ ] Done."
+
+## Kubernetes
+apt-get install -y apt-transport-https
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+touch /etc/apt/sources.list.d/kubernetes.list 
+echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+apt-get update
+apt-get install -y kubectl
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+
+curl -L https://github.com/kubernetes/kompose/releases/download/v1.1.0/kompose-linux-amd64 -o kompose
+chmod +x kompose
+sudo mv ./kompose /usr/local/bin/kompose
 
 ## Colon-replace ##
 echo "[ ] Creating replace_colon script"
