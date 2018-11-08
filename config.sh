@@ -81,7 +81,7 @@ echo "[ ] Installing Veil Framework"
 cd /root
 git clone https://github.com/Veil-Framework/Veil.git
 cd Veil
-./Install.sh -c
+./config/setup.sh --force --silent
 cd /root
 echo "[ ] Done."
 
