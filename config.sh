@@ -124,6 +124,9 @@ touch /var/log/iptables-drop.log
 echo "if $msg contains 'IPTables-Drop' then -/var/log/iptables-drop.log" >> /etc/rsyslog.conf
 echo "& ~" >> /etc/rsyslog.conf
 
+## PIP installs
+pip install pyinstaller
+
 
 ## Reminders ##
 echo ""
