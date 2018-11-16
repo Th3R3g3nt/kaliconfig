@@ -124,8 +124,16 @@ touch /var/log/iptables-drop.log
 echo "if $msg contains 'IPTables-Drop' then -/var/log/iptables-drop.log" >> /etc/rsyslog.conf
 echo "& ~" >> /etc/rsyslog.conf
 
-## PIP installs
+## PIP installs (native & Wine x86)
 pip install pyinstaller
+mkdir ~/.wine/drive_c/Python27
+cd ~/.wine/drive_c/Python27
+wget https://www.python.org/ftp/python/2.7.15/python-2.7.15.msi
+wine msiexec /i python-2.7.15.msi 
+wine python.exe -m pip install --upgrade pip
+wine python.exe -m pip install pyinstaller
+cd ~
+
 
 
 ## Reminders ##
