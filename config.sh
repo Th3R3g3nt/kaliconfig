@@ -15,7 +15,7 @@ echo "[ ] Done."
 
 ## Goodies ##
 echo "[ ] Installing goodies"
-apt-get -y install synaptic tuxcmd tuxcmd-modules libreoffice tor filezilla filezilla-common htop nethogs gtk-recordmydesktop recordmydesktop remmina unrar unace rar unrar p7zip zip unzip p7zip-full p7zip-rar file-roller curl ike-scan nikto john libssl-dev bridge-utils bettercap docker docker-compose curl virtualbox ncat apt-transport-https nload iftop metagoofil mingw-w64 pure-ftpd
+apt-get -y install synaptic tuxcmd tuxcmd-modules libreoffice tor filezilla filezilla-common htop nethogs gtk-recordmydesktop recordmydesktop remmina unrar unace rar unrar p7zip zip unzip p7zip-full p7zip-rar file-roller curl ike-scan nikto john libssl-dev bridge-utils bettercap docker docker-compose curl virtualbox ncat apt-transport-https nload iftop metagoofil mingw-w64 pure-ftpd gcc-multilib g++-multilib
 echo "[ ] Done."
 
 ## Enable Metasploit at Startup ##
