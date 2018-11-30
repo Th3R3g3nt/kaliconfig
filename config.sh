@@ -15,7 +15,7 @@ echo "[ ] Done."
 
 ## Goodies ##
 echo "[ ] Installing goodies"
-apt-get -y install synaptic tuxcmd tuxcmd-modules libreoffice tor filezilla filezilla-common htop nethogs gtk-recordmydesktop recordmydesktop remmina unrar unace rar unrar p7zip zip unzip p7zip-full p7zip-rar file-roller curl ike-scan nikto john libssl-dev bridge-utils bettercap docker docker-compose curl virtualbox ncat apt-transport-https nload iftop metagoofil mingw-w64 pure-ftpd gcc-multilib g++-multilib
+apt-get -y install synaptic tuxcmd tuxcmd-modules libreoffice tor filezilla filezilla-common htop nethogs gtk-recordmydesktop recordmydesktop remmina unrar unace rar unrar p7zip zip unzip p7zip-full p7zip-rar file-roller curl ike-scan nikto john libssl-dev bridge-utils bettercap docker docker-compose curl virtualbox ncat apt-transport-https nload iftop metagoofil mingw-w64 pure-ftpd gcc-multilib g++-multilib libpcap-dev
 echo "[ ] Done."
 
 ## Enable Metasploit at Startup ##
@@ -134,7 +134,13 @@ wine python.exe -m pip install --upgrade pip
 wine python.exe -m pip install pyinstaller
 cd ~
 
-
+## SI6 IPv6 Toolkit
+cd ~
+git clone https://github.com/fgont/ipv6toolkit.git
+cd ipv6toolkit
+make all
+make install
+cd ~
 
 ## Reminders ##
 echo ""
