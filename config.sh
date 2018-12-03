@@ -142,6 +142,9 @@ make all
 make install
 cd ~
 
+## WebDav for the brave
+pip install wsgidav cheroot
+
 ## Reminders ##
 echo ""
 echo "Done with the automated portion"
