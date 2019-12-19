@@ -67,23 +67,23 @@ echo "MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-
 /etc/init.d/ssh restart
 echo "[ ] Done."
 
-## CAL9000 ##
-echo "[ ] Downloading CAL9000"
-cd /root
-mkdir Cal9000
-cd Cal9000
-wget -c -r --no-parent http://owasp-code-central.googlecode.com/svn/trunk/labs/cal9000/
-cd /root
-echo "[ ] Done."
+## CAL9000 ## Will replace it with cyberchef
+#echo "[ ] Downloading CAL9000"
+#cd /root
+#mkdir Cal9000
+#cd Cal9000
+#wget -c -r --no-parent http://owasp-code-central.googlecode.com/svn/trunk/labs/cal9000/
+#cd /root
+#echo "[ ] Done."
 
-## Veil Framework ##
-echo "[ ] Installing Veil Framework"
-cd /root
-git clone https://github.com/Veil-Framework/Veil.git
-cd Veil
-./config/setup.sh --force --silent
-cd /root
-echo "[ ] Done."
+## Veil Framework ## # Sorry, no longer the hot thing
+#echo "[ ] Installing Veil Framework"
+#cd /root
+#git clone https://github.com/Veil-Framework/Veil.git
+#cd Veil
+#./config/setup.sh --force --silent
+#cd /root
+#echo "[ ] Done."
 
 ## Flash ##
 #echo "[ ] Installing Flash"
@@ -141,6 +141,9 @@ cd ipv6toolkit
 make all
 make install
 cd ~
+
+## GREP highligting
+echo GREP_OPTIONS='--color=auto'>>/root/.profile
 
 ## WebDav for the brave
 pip install wsgidav cheroot
