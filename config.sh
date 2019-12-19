@@ -143,7 +143,7 @@ make install
 cd ~
 
 ## GREP highligting
-echo GREP_OPTIONS='--color=auto'>>/root/.profile
+echo "alias grep='grep --color=auto'">>/root/.bashrc
 
 ## WebDav for the brave
 pip install wsgidav cheroot
