@@ -26,6 +26,7 @@ update-rc.d metasploit enable
 ## IPTables rule
 echo "[ ] Installing firewall rules"
 iptables -F
+iptables -P INPUT DROP
 iptables -P FORWARD DROP
 iptables -P OUTPUT ACCEPT
 iptables -X LOGGING
@@ -33,7 +34,7 @@ iptables -N LOGGING
 
 iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -A INPUT -s 127.0.0.0/8 -d 127.0.0.0/8 -i lo -j ACCEPT
-iptables -A INPUT -p tcp --dport 65022 -m state --state NEW -j ACCEPT
+iptables -A INPUT -s 192.168.0.0/16 -p tcp --dport 65022 -m state --state NEW -j ACCEPT
 iptables -A INPUT -j LOGGING
 
 iptables -A FORWARD -s 127.0.0.0/8 -d 127.0.0.0/8 -i lo -j ACCEPT
